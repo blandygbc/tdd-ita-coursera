@@ -11,12 +11,12 @@ public class TestCustomer extends TestCase {
 
 	@Override
 	protected void setUp() throws Exception {
-		client = new Customer("Jo�o");
+		client = new Customer("João");
 	}
 
 	public void testNameCreation() {
 		String result = client.statement();
-		assertContain(result, "Rental Record for Jo�o");
+		assertContain(result, "Rental Record for João");
 	}
 
 	public void testOneRegularOneDay() {
@@ -66,7 +66,7 @@ public class TestCustomer extends TestCase {
 		rentMovie("Troia", Movie.NEW_RELEASE, 3);
 		rentMovie("Procurando Nemo", Movie.CHILDRENS, 3);
 		rentMovie("Indiana Jones", Movie.REGULAR, 2);
-		rentMovie("Rei Le�o", Movie.CHILDRENS, 4);
+		rentMovie("Rei Leão", Movie.CHILDRENS, 4);
 		rentMovie("E o vento levou...", Movie.REGULAR, 3);
 		String result = client.statement();
 		assertContain(result, "Amount owed is 25.0");
@@ -74,7 +74,7 @@ public class TestCustomer extends TestCase {
 	}
 
 	private void rentMovie(String title, int type, int days) {
-		Movie movie = new Movie(title, type);
+		Movie movie = Movie.createMovie(title, type);
 		Rental rent = new Rental(movie, days);
 		client.addRental(rent);
 	}

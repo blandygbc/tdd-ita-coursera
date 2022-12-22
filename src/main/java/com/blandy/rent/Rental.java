@@ -2,20 +2,28 @@ package main.java.com.blandy.rent;
 
 public class Rental {
 
-	private Movie _movie;
+	Movie movie;
 
-	private int _daysRented;
+	private int daysRented;
 
 	public Rental(Movie movie, int daysRented) {
-		_movie = movie;
-		_daysRented = daysRented;
+		this.movie = movie;
+		this.daysRented = daysRented;
 	}
 
 	public int getDaysRented() {
-		return _daysRented;
+		return daysRented;
 	}
 
 	public Movie getMovie() {
-		return _movie;
+		return movie;
+	}
+
+	public int getFrequentRenterPoints() {
+		return movie.getFrequentRenterPoints(daysRented);
+	}
+
+	public double getAmmount() {
+		return movie.getAmmount(daysRented);
 	}
 }
